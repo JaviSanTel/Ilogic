@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__obsidian-ilogic__*",
+      "mcp__Claude_in_Chrome__*",
+      "mcp__Claude_Preview__*",
+      "mcp__ccd_session__*",
+      "mcp__scheduled-tasks__*",
+      "mcp__mcp-registry__*"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "skipDangerousModePermissionPrompt": true
+}

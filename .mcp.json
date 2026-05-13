@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "obsidian-ilogic": {
+      "command": "npx",
+      "args": ["-y", "mcp-obsidian", "P:\\Obsidian\\Proyectos\\Ilogic\\Ilogic"],
+      "env": {}
+    },
+    "mobile-bridge": {
+      "command": "node",
+      "args": ["P:\\Aetheria\\MobileBridge\\read-queue.js", "ilogic"],
+      "env": {}
+    }
+  }
+}
