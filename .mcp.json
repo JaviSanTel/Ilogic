@@ -2,7 +2,7 @@
   "mcpServers": {
     "obsidian-ilogic": {
       "command": "npx",
-      "args": ["-y", "mcp-obsidian", "P:\\Obsidian\\Proyectos\\Ilogic\\Ilogic"],
+      "args": ["-y", "mcp-obsidian", "P:\\Aetheria\\Ilogic\\vault"],
       "env": {}
     },
     "mobile-bridge": {
