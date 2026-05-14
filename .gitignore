@@ -1,0 +1,42 @@
+# ─── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+app/node_modules/
+
+# ─── Expo / React Native ────────────────────────────────────────────────────
+app/.expo/
+app/dist/
+app/web-build/
+app/expo-env.d.ts
+app/.metro-health-check*
+
+# ─── Native builds ───────────────────────────────────────────────────────────
+app/ios/
+app/android/
+app/.kotlin/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# ─── Env files ───────────────────────────────────────────────────────────────
+.env
+.env.local
+*.env.local
+
+# ─── Claude Code — local config (NO subir) ──────────────────────────────────
+.claude/settings.local.json
+.claude/launch.json
+
+# ─── Editor ──────────────────────────────────────────────────────────────────
+.DS_Store
+*.pem
+*.tsbuildinfo
+.vscode/
+.idea/
