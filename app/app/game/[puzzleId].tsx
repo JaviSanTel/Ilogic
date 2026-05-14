@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PuzzleButton } from '../../src/components/PuzzleButton';
+import { LogicGridBoard } from '../../src/puzzles/logic-grid/LogicGridBoard';
 import { PyramidBoard } from '../../src/puzzles/pyramid/PyramidBoard';
 import { PuzzleType } from '../../src/types';
 
@@ -10,7 +11,11 @@ export default function GameScreen() {
   const router = useRouter();
 
   // puzzleId format: "{type}-{difficulty}-{timestamp}"
-  const puzzleType = puzzleId?.split('-')[0] as PuzzleType | undefined;
+  // logic-grid has a hyphen in the type, so we parse smartly
+  const id = puzzleId ?? '';
+  const puzzleType: PuzzleType | undefined = id.startsWith('logic-grid-')
+    ? 'logic-grid'
+    : (id.split('-')[0] as PuzzleType | undefined);
 
   const handleComplete = () => {
     router.replace(`/results/${puzzleId}`);
@@ -20,6 +25,8 @@ export default function GameScreen() {
     switch (puzzleType) {
       case 'pyramid':
         return <PyramidBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
+      case 'logic-grid':
+        return <LogicGridBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       default:
         return (
           <View style={styles.placeholder}>
