@@ -2,7 +2,9 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PuzzleButton } from '../../src/components/PuzzleButton';
+import { KakuroBoard } from '../../src/puzzles/kakuro/KakuroBoard';
 import { LogicGridBoard } from '../../src/puzzles/logic-grid/LogicGridBoard';
+import { NonogramBoard } from '../../src/puzzles/nonogram/NonogramBoard';
 import { PyramidBoard } from '../../src/puzzles/pyramid/PyramidBoard';
 import { PuzzleType } from '../../src/types';
 
@@ -27,6 +29,10 @@ export default function GameScreen() {
         return <PyramidBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       case 'logic-grid':
         return <LogicGridBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
+      case 'kakuro':
+        return <KakuroBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
+      case 'nonogram':
+        return <NonogramBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       default:
         return (
           <View style={styles.placeholder}>

@@ -12,8 +12,8 @@ const PUZZLES: {
 }[] = [
   { type: 'pyramid',          title: 'Pirámide',         emoji: '🔺', description: 'Rellena la pirámide numérica',     enabled: true  },
   { type: 'logic-grid',       title: 'Quién es Quién',   emoji: '🧩', description: 'Deducción lógica con pistas',       enabled: true  },
-  { type: 'kakuro',           title: 'Kakuro',           emoji: '➕', description: 'Sumas cruzadas sin repetición',     enabled: false },
-  { type: 'nonogram',         title: 'Nonograma',        emoji: '🖼️', description: 'Pinta el Picross',                  enabled: false },
+  { type: 'kakuro',           title: 'Kakuro',           emoji: '➕', description: 'Sumas cruzadas sin repetición',     enabled: true  },
+  { type: 'nonogram',         title: 'Nonograma',        emoji: '🖼️', description: 'Pinta el Picross',                  enabled: true  },
   { type: 'lanzarrayos',      title: 'Lanzarrayos',      emoji: '⚡', description: 'Lanza rayos desde las cápsulas',    enabled: false },
   { type: 'cruzex',           title: 'Crúzex',           emoji: '🔢', description: 'Crucigrama numérico',                enabled: false },
   { type: 'clasificaciones',  title: 'Clasificaciones',  emoji: '⚽', description: 'Deduce los resultados del torneo',   enabled: false },
