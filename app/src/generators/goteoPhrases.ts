@@ -1,0 +1,35 @@
+/**
+ * Banco de frases para el puzzle Goteo.
+ * Solo letras y espacios. Sin tildes ni puntuación para simplificar.
+ */
+export const PHRASES = {
+  easy: [
+    'HOLA MUNDO',
+    'BUEN DIA',
+    'BUENAS NOCHES',
+    'GRACIAS POR TODO',
+    'EL SOL BRILLA',
+    'FELIZ NAVIDAD',
+    'AMAR ES VIVIR',
+    'CASA DE PLAYA',
+    'CAFE CALIENTE',
+    'CIELO AZUL',
+  ],
+  medium: [
+    'A QUIEN MADRUGA DIOS AYUDA',
+    'NO POR MUCHO MADRUGAR AMANECE MAS TEMPRANO',
+    'EL QUE RIE EL ULTIMO RIE MEJOR',
+    'MAS VALE PAJARO EN MANO',
+    'OJOS QUE NO VEN CORAZON QUE NO SIENTE',
+    'EN BOCA CERRADA NO ENTRAN MOSCAS',
+    'A CABALLO REGALADO NO LE MIRES EL DIENTE',
+    'PERRO QUE LADRA NO MUERDE',
+  ],
+  hard: [
+    'NO HAY MAL QUE POR BIEN NO VENGA',
+    'EL HABITO NO HACE AL MONJE PERO LO IDENTIFICA',
+    'A FALTA DE PAN BUENAS SON TORTAS DULCES',
+    'AL QUE MADRUGA LE AYUDA DIOS Y EL DESTINO',
+    'CRIA CUERVOS Y TE SACARAN LOS OJOS HERMANO',
+  ],
+};

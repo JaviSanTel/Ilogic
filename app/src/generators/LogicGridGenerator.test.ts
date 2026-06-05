@@ -1,6 +1,6 @@
 import { generateLogicGrid } from './LogicGridGenerator';
-import { validateLogicGrid } from '../puzzles/logic-grid/validator';
-import { pairKey } from '../puzzles/logic-grid/types';
+import { validateLogicGrid, validateSummary } from '../puzzles/logic-grid/validator';
+import { pairKey, SummaryState } from '../puzzles/logic-grid/types';
 import { Difficulty } from '../types';
 
 const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard'];
@@ -34,33 +34,10 @@ describe('LogicGridGenerator', () => {
         }
       });
 
-      it('passing the full solution as state validates as correct', () => {
+      it('passing the full solution as summary validates as correct', () => {
         const p = generateLogicGrid(difficulty);
-        // Build state with all positive ✓ marks
-        const state: Record<string, '✓' | '✗' | undefined> = {};
-        const anchorCat = p.categories[0];
-        const anchorItems = p.items[anchorCat];
-
-        for (const anchor of anchorItems) {
-          for (let c = 1; c < p.categories.length; c++) {
-            const cat = p.categories[c];
-            const value = p.solution[`${anchor}.${cat}`];
-            state[pairKey(anchor, value)] = '✓';
-          }
-        }
-
-        // Cross categories (non-anchor pairs)
-        for (let c1 = 1; c1 < p.categories.length; c1++) {
-          for (let c2 = c1 + 1; c2 < p.categories.length; c2++) {
-            for (const anchor of anchorItems) {
-              const v1 = p.solution[`${anchor}.${p.categories[c1]}`];
-              const v2 = p.solution[`${anchor}.${p.categories[c2]}`];
-              state[pairKey(v1, v2)] = '✓';
-            }
-          }
-        }
-
-        const result = validateLogicGrid(p, state);
+        const summary: SummaryState = { ...p.solution };
+        const result = validateSummary(p, summary);
         expect(result.isCorrect).toBe(true);
       });
 
