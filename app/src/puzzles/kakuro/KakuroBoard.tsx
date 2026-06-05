@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { NumberPad } from '../../components/NumberPad';
 import { generateKakuro } from '../../generators/KakuroGenerator';
 import { Difficulty, KakuroCell, KakuroPuzzle } from '../../types';
@@ -61,7 +62,13 @@ export function KakuroBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.container}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Kakuro" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Kakuro"
+        helpTitle={HELP.kakuro.title}
+        helpContent={HELP.kakuro.body}
+      />
 
       <ScrollView contentContainerStyle={styles.boardArea}>
         <View>

@@ -9,16 +9,21 @@ import { LanzarayosBoard } from '../../src/puzzles/lanzarrayos/LanzarayosBoard';
 import { LogicGridBoard } from '../../src/puzzles/logic-grid/LogicGridBoard';
 import { NonogramBoard } from '../../src/puzzles/nonogram/NonogramBoard';
 import { PyramidBoard } from '../../src/puzzles/pyramid/PyramidBoard';
+import { SudokuBoard } from '../../src/puzzles/sudoku/SudokuBoard';
 import { PuzzleType } from '../../src/types';
+
+/** Detecta el tipo de puzzle desde el puzzleId */
+function parsePuzzleType(puzzleId: string): PuzzleType | undefined {
+  if (puzzleId.startsWith('logic-grid-')) return 'logic-grid';
+  if (puzzleId.startsWith('sudoku-')) return 'sudoku';
+  const firstPart = puzzleId.split('-')[0];
+  return firstPart as PuzzleType;
+}
 
 export default function GameScreen() {
   const { puzzleId } = useLocalSearchParams<{ puzzleId: string }>();
   const router = useRouter();
-
-  // 'logic-grid' tiene un guión interno, hay que detectarlo
-  const firstPart = puzzleId?.split('-')[0];
-  const puzzleType: PuzzleType | undefined =
-    firstPart === 'logic' ? 'logic-grid' : (firstPart as PuzzleType | undefined);
+  const puzzleType = puzzleId ? parsePuzzleType(puzzleId) : undefined;
 
   const handleComplete = (elapsedSeconds: number) => {
     router.replace(`/results/${puzzleId}?time=${elapsedSeconds}`);
@@ -34,6 +39,7 @@ export default function GameScreen() {
       case 'clasificaciones': return <ClasificacionesBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       case 'cruzex':          return <CruzexBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       case 'lanzarrayos':     return <LanzarayosBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
+      case 'sudoku':          return <SudokuBoard puzzleId={puzzleId!} onComplete={handleComplete} />;
       default:
         return (
           <View style={styles.placeholder}>

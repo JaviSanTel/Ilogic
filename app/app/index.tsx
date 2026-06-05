@@ -18,6 +18,7 @@ const PUZZLES: {
   { type: 'cruzex',           title: 'Crúzex',           emoji: '🔢', description: 'Crucigrama numérico',                enabled: true  },
   { type: 'clasificaciones',  title: 'Clasificaciones',  emoji: '⚽', description: 'Deduce los resultados del torneo',   enabled: true  },
   { type: 'goteo',            title: 'Goteo',            emoji: '💧', description: 'Descifra la frase letra a letra',    enabled: true  },
+  { type: 'sudoku',           title: 'Sudoku',           emoji: '🔠', description: '4 variantes: Clásico, X, Mini y Hyper', enabled: true  },
 ];
 
 export default function HomeScreen() {

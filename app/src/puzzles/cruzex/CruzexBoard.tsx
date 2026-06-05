@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { NumberPad } from '../../components/NumberPad';
 import { generateCruzex } from '../../generators/CruzexGenerator';
 import { CruzexPuzzle, Difficulty } from '../../types';
@@ -56,7 +57,13 @@ export function CruzexBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Crúzex" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Crúzex"
+        helpTitle={HELP.cruzex.title}
+        helpContent={HELP.cruzex.body}
+      />
 
       <ScrollView contentContainerStyle={styles.container}>
         <View>

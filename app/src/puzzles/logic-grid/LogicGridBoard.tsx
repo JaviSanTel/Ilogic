@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { generateLogicGrid } from '../../generators/LogicGridGenerator';
 import { Difficulty, LogicGridPuzzle } from '../../types';
 import { GridState, pairKey, SummaryState } from './types';
@@ -63,7 +64,13 @@ export function LogicGridBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Quién es Quién" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Quién es Quién"
+        helpTitle={HELP['logic-grid'].title}
+        helpContent={HELP['logic-grid'].body}
+      />
     <ScrollView contentContainerStyle={styles.container}>
       {/* ── Pistas ───────────────────────────────────────────────────────── */}
       <View style={styles.cluesBox}>

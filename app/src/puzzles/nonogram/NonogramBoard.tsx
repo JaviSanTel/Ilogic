@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { generateNonogram } from '../../generators/NonogramGenerator';
 import { Difficulty, NonogramPuzzle } from '../../types';
 import { NonogramMark, NonogramState } from './types';
@@ -43,7 +44,13 @@ export function NonogramBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Nonograma" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Nonograma"
+        helpTitle={HELP.nonogram.title}
+        helpContent={HELP.nonogram.body}
+      />
 
       <ScrollView contentContainerStyle={styles.container}>
         <ScrollView horizontal>

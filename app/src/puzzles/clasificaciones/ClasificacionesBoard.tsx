@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import {
   generateClasificaciones, matchKey,
 } from '../../generators/ClasificacionesGenerator';
@@ -80,7 +81,13 @@ export function ClasificacionesBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Clasificaciones" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Clasificaciones"
+        helpTitle={HELP.clasificaciones.title}
+        helpContent={HELP.clasificaciones.body}
+      />
 
       <ScrollView contentContainerStyle={styles.container}>
         {/* Tabla de clasificación */}

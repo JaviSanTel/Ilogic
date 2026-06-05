@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { generateLanzarayos } from '../../generators/LanzarayosGenerator';
 import { Difficulty, LanzarayosPuzzle } from '../../types';
 import { LanzarayosState } from './types';
@@ -74,7 +75,13 @@ export function LanzarayosBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Lanzarrayos" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Lanzarrayos"
+        helpTitle={HELP.lanzarrayos.title}
+        helpContent={HELP.lanzarrayos.body}
+      />
 
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.hint}>

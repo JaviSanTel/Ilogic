@@ -15,6 +15,7 @@ const TITLES: Record<string, string> = {
   cruzex:          'Crúzex',
   clasificaciones: 'Clasificaciones',
   goteo:           'Goteo',
+  sudoku:          'Sudoku',
 };
 
 function formatTime(seconds: number): string {
@@ -29,10 +30,19 @@ export default function ResultsScreen() {
   const [bestTime, setBestTime] = useState<number | null>(null);
   const [isNewRecord, setIsNewRecord] = useState(false);
 
+  // Detección del tipo desde puzzleId:
+  // - logic-grid-{difficulty}-{timestamp}
+  // - sudoku-{variant}-{difficulty}-{timestamp}
+  // - {type}-{difficulty}-{timestamp}  (resto)
+  const isLogicGrid = puzzleId?.startsWith('logic-grid-');
+  const isSudoku = puzzleId?.startsWith('sudoku-');
   const parts = puzzleId?.split('-') ?? [];
-  // formato: {type}-{difficulty}-{timestamp} — pero 'logic-grid' tiene guión
-  const type = (parts[0] === 'logic' ? 'logic-grid' : parts[0]) as PuzzleType;
-  const difficulty = (parts[0] === 'logic' ? parts[2] : parts[1]) as Difficulty;
+  const type = (isLogicGrid ? 'logic-grid' : parts[0]) as PuzzleType;
+  const difficulty = (
+    isLogicGrid ? parts[2] :
+    isSudoku    ? parts[2] :
+                  parts[1]
+  ) as Difficulty;
   const elapsed = parseInt(time ?? '0', 10);
   const title = TITLES[type] ?? type;
 

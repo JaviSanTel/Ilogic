@@ -12,13 +12,23 @@ interface Props {
   enabled?: boolean;
 }
 
+/** Puzzles que tienen pantalla intermedia de selección de variante */
+const HAS_VARIANT_SCREEN: Partial<Record<PuzzleType, string>> = {
+  sudoku: '/variant/sudoku',
+};
+
 export function PuzzleCard({ type, title, emoji, description, enabled = true }: Props) {
   const router = useRouter();
   const [pickerVisible, setPickerVisible] = useState(false);
 
   const handlePress = () => {
     if (!enabled) return;
-    setPickerVisible(true);
+    const variantRoute = HAS_VARIANT_SCREEN[type];
+    if (variantRoute) {
+      router.push(variantRoute as any);
+    } else {
+      setPickerVisible(true);
+    }
   };
 
   const handleSelect = (difficulty: Difficulty) => {
