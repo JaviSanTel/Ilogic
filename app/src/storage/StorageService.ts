@@ -12,7 +12,7 @@ const DEFAULT_STATS: GlobalStats = {
   totalSolved: 0,
   byType: {
     pyramid: 0, 'logic-grid': 0, kakuro: 0, nonogram: 0,
-    lanzarrayos: 0, cruzex: 0, clasificaciones: 0, goteo: 0,
+    lanzarrayos: 0, cruzex: 0, clasificaciones: 0, goteo: 0, sudoku: 0,
   },
   bestTimes: {},
   currentStreak: 0,

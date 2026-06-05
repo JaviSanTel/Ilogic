@@ -6,7 +6,10 @@ export type PuzzleType =
   | 'lanzarrayos'
   | 'cruzex'
   | 'clasificaciones'
-  | 'goteo';
+  | 'goteo'
+  | 'sudoku';
+
+export type SudokuVariant = 'classic' | 'x' | 'mini' | 'hyper';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -115,6 +118,15 @@ export interface GoteoPuzzle extends PuzzleBase {
   solution: string;
 }
 
+// ── Sudoku ───────────────────────────────────────────────────────────────────
+export interface SudokuPuzzle extends PuzzleBase {
+  type: 'sudoku';
+  variant: SudokuVariant;
+  size: number;        // 9 para clásico/X/hyper, 6 para mini
+  grid: (number | null)[][];     // celdas dadas (null = vacía a rellenar)
+  solution: number[][];
+}
+
 // ── Union ────────────────────────────────────────────────────────────────────
 export type AnyPuzzle =
   | PyramidPuzzle
@@ -124,4 +136,5 @@ export type AnyPuzzle =
   | LanzarayosPuzzle
   | CruzexPuzzle
   | ClasificacionesPuzzle
-  | GoteoPuzzle;
+  | GoteoPuzzle
+  | SudokuPuzzle;

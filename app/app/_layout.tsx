@@ -11,6 +11,7 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" />
+        <Stack.Screen name="variant/sudoku" />
         <Stack.Screen name="game/[puzzleId]" />
         <Stack.Screen name="results/[puzzleId]" />
       </Stack>

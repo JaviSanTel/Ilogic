@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { generateGoteo } from '../../generators/GoteoGenerator';
 import { Difficulty, GoteoPuzzle } from '../../types';
 import { GoteoState } from './types';
@@ -35,7 +36,13 @@ export function GoteoBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.wrapper}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Goteo" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Goteo"
+        helpTitle={HELP.goteo.title}
+        helpContent={HELP.goteo.body}
+      />
 
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.attemptBox}>

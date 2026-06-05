@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { GameHeader } from '../../components/GameHeader';
+import { HELP } from '../../components/helpTexts';
 import { NumberPad } from '../../components/NumberPad';
 import { generatePyramid } from '../../generators/PyramidGenerator';
 import { Difficulty, PyramidPuzzle } from '../../types';
@@ -78,7 +79,13 @@ export function PyramidBoard({ puzzleId, onComplete }: Props) {
 
   return (
     <View style={styles.container}>
-      <GameHeader running={!solved} onTick={(s) => { secondsRef.current = s; }} title="Pirámide" />
+      <GameHeader
+        running={!solved}
+        onTick={(s) => { secondsRef.current = s; }}
+        title="Pirámide"
+        helpTitle={HELP.pyramid.title}
+        helpContent={HELP.pyramid.body}
+      />
 
       <View style={styles.boardArea}>
         <View style={styles.pyramid}>
